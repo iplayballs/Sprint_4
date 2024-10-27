@@ -1,4 +1,4 @@
-package base;
+package ru.qascooter.baseTest;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,17 +13,17 @@ public class BaseTestsBeforeAndAfter {
     protected WebDriver driver;
 
     @Before
-    public void initDriver(){
-       connectionChromeDriver();
+    public void initDriver() {
+        connectionChromeDriver();
 
-   }
+    }
 
     @After
-    public void connectionCloseChromeDriver(){
+    public void connectionCloseChromeDriver() {
         driver.quit();
     }
 
-    public void connectionChromeDriver(){
+    public void connectionChromeDriver() {
         ChromeOptions options = new ChromeOptions();
 
         options.addArguments("--remote-allow-origins=");
@@ -34,7 +34,7 @@ public class BaseTestsBeforeAndAfter {
         driver.manage().window().maximize();
     }
 
-    public void connectionFirefoxDriver(String url){
+    public void connectionFirefoxDriver(String url) {
         FirefoxOptions options = new FirefoxOptions();
 
         options.addArguments("--remote-allow-origins=");

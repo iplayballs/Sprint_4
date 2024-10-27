@@ -1,21 +1,21 @@
-package testCases;
+package ru.qascooter.testCases;
 
-import base.BaseCookieClose;
-import base.BaseTestsBeforeAndAfter;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
-import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.HomePageScooter;
+import ru.qascooter.baseTest.BaseCookieClose;
+import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
+import ru.qascooter.pageObjects.HomePageScooter;
 
 import java.time.Duration;
 
-import static base.constants.BaseUrlConstants.URL_MAIN_SCOOTER;
 import static org.junit.Assert.assertEquals;
+import static ru.qascooter.baseTest.constants.BaseUrlConstants.URL_MAIN_SCOOTER;
 
 @RunWith(Parameterized.class)
 public class QuestionAnswerTest extends BaseTestsBeforeAndAfter {
@@ -32,7 +32,7 @@ public class QuestionAnswerTest extends BaseTestsBeforeAndAfter {
 
     @Parameterized.Parameters
     public static Object[][] getQuestionAndAnswer() {
-        return new Object[][] {
+        return new Object[][]{
                 {"Сколько это стоит? И как оплатить?", "Сутки — 400 рублей. Оплата курьеру — наличными или картой.", 0},
                 {"Хочу сразу несколько самокатов! Так можно?", "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.", 1},
                 {"Как рассчитывается время аренды?", "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", 2},
@@ -45,42 +45,42 @@ public class QuestionAnswerTest extends BaseTestsBeforeAndAfter {
     }
 
     @Test
-    public void testComplianceFAQQuestionAnswer (){
-    driver.get(URL_MAIN_SCOOTER);
-    BaseCookieClose.clickCookieButtonClose(driver);
-    BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);
+    public void testComplianceFAQQuestionAnswer() {
+        driver.get(URL_MAIN_SCOOTER);
+        BaseCookieClose.clickCookieButtonClose(driver);
+        BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);
 
-    HomePageScooter objHomePageScooter = new HomePageScooter(driver);
-    objHomePageScooter.waitForHeaderQuestionsAboutMain();
+        HomePageScooter objHomePageScooter = new HomePageScooter(driver);
+        objHomePageScooter.waitForHeaderQuestionsAboutMain();
 
-    //собираем xpath вопроса и ответа
-    String xpathLocatorQuestion = ".//div[@id='accordion__heading-" + accordionIndex + "']";
-    String xpathLocatorAnswer = ".//div[@id='accordion__panel-" + accordionIndex + "']/p";
+        //собираем xpath вопроса и ответа
+        String xpathLocatorQuestion = ".//div[@id='accordion__heading-" + accordionIndex + "']";
+        String xpathLocatorAnswer = ".//div[@id='accordion__panel-" + accordionIndex + "']/p";
 
-    //скролл до аккордеона
-    WebElement element = driver.findElement(By.xpath(xpathLocatorQuestion));
-    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        //скролл до аккордеона
+        WebElement element = driver.findElement(By.xpath(xpathLocatorQuestion));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 
-    //ожидание кликабельности элемента
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathLocatorQuestion)));
+        //ожидание кликабельности элемента
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathLocatorQuestion)));
 
-    //клик по вопросу
-    driver.findElement(By.xpath(xpathLocatorQuestion)).click();
+        //клик по вопросу
+        driver.findElement(By.xpath(xpathLocatorQuestion)).click();
 
-    //ожидание появления ответа
-    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathLocatorAnswer)));
+        //ожидание появления ответа
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathLocatorAnswer)));
 
-    //получаем текст вопроса и ответа из найденных элементов
-    String elementQuestion = driver.findElement(By.xpath(xpathLocatorQuestion)).getText();
-    String elementAnswer = driver.findElement(By.xpath(xpathLocatorAnswer)).getText();
+        //получаем текст вопроса и ответа из найденных элементов
+        String elementQuestion = driver.findElement(By.xpath(xpathLocatorQuestion)).getText();
+        String elementAnswer = driver.findElement(By.xpath(xpathLocatorAnswer)).getText();
 
-    //собираем вопрос и ответ для сравнения
-    String expectedQuestionAndAnswer = expectedQuestion + " " + expectedAnswer;
-    String actualQuestionAndAnswer = elementQuestion + " " + elementAnswer;
+        //собираем вопрос и ответ для сравнения
+        String expectedQuestionAndAnswer = expectedQuestion + " " + expectedAnswer;
+        String actualQuestionAndAnswer = elementQuestion + " " + elementAnswer;
 
-    assertEquals("Ожидается вопрос: " + expectedQuestion + ". Ожидается ответ: " + expectedAnswer, expectedQuestionAndAnswer, actualQuestionAndAnswer);
+        assertEquals("Ожидается вопрос: " + expectedQuestion + ". Ожидается ответ: " + expectedAnswer, expectedQuestionAndAnswer, actualQuestionAndAnswer);
 
-    System.out.println("Тест QuestionAnswerTest прошел успешно.");
+        System.out.println("Тест QuestionAnswerTest прошел успешно.");
     }
 }

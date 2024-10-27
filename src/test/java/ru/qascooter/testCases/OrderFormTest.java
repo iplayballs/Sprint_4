@@ -1,22 +1,22 @@
-package testCases;
+package ru.qascooter.testCases;
 
-import base.BaseCookieClose;
-import base.BaseTestsBeforeAndAfter;
-import pageObjects.OrderPageScooter;
 import org.junit.Test;
-import testCases.testData.OrderFormTestData;
+import ru.qascooter.baseTest.BaseCookieClose;
+import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
+import ru.qascooter.pageObjects.OrderPageScooter;
+import ru.qascooter.testCases.testData.OrderFormTestData;
 
-import static base.constants.BaseUrlConstants.URL_ORDER_SCOOTER;
 import static org.junit.Assert.assertEquals;
-import static testCases.testData.OrderFormTestData.*;
+import static ru.qascooter.baseTest.constants.BaseUrlConstants.URL_ORDER_SCOOTER;
+import static ru.qascooter.testCases.testData.OrderFormTestData.*;
 
 public class OrderFormTest extends BaseTestsBeforeAndAfter {
 
     @Test
-    public void testFillingOrderFormSuccessShortTestData(){
+    public void testFillingOrderFormSuccessShortTestData() {
         driver.get(URL_ORDER_SCOOTER);
-       BaseCookieClose.clickCookieButtonClose(driver);
-       BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);
+        BaseCookieClose.clickCookieButtonClose(driver);
+        BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);
 
         OrderPageScooter objOrderPageScooter = new OrderPageScooter(driver);
         //ожидаем появления заголовка Для кого самокат
@@ -56,13 +56,13 @@ public class OrderFormTest extends BaseTestsBeforeAndAfter {
         //ожидание появления модалки Заказ оформлен
         objOrderPageScooter.waitForHeaderOrderFinished();
         //проверка появления модалки Заказ оформлен
-        assertEquals("Переход на модалку Заказ оформлен", "Заказ оформлен",objOrderPageScooter.getTextOfXpathHeaderModalOrderFinished());
+        assertEquals("Переход на модалку Заказ оформлен", "Заказ оформлен", objOrderPageScooter.getTextOfXpathHeaderModalOrderFinished());
 
         System.out.println("Тест testFillingOrderFormSuccessShortTestData прошел успешно. Заказ успешно завершен.");
     }
 
     @Test
-    public void testFillingOrderFormSuccessLongTestData(){
+    public void testFillingOrderFormSuccessLongTestData() {
         driver.get(URL_ORDER_SCOOTER);
         BaseCookieClose.clickCookieButtonClose(driver);
         BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);
@@ -105,7 +105,7 @@ public class OrderFormTest extends BaseTestsBeforeAndAfter {
         //ожидание появления модалки Заказ оформлен
         objOrderPageScooter.waitForHeaderOrderFinished();
         //проверка появления модалки Заказ оформлен
-        assertEquals("Переход на модалку Заказ оформлен", "Заказ оформлен",objOrderPageScooter.getTextOfXpathHeaderModalOrderFinished());
+        assertEquals("Переход на модалку Заказ оформлен", "Заказ оформлен", objOrderPageScooter.getTextOfXpathHeaderModalOrderFinished());
 
         System.out.println("Тест testFillingOrderFormSuccessLongTestData прошел успешно. Заказ успешно завершен.");
     }

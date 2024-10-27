@@ -1,18 +1,18 @@
-package testCases;
+package ru.qascooter.testCases;
 
-import base.BaseCookieClose;
-import base.BaseTestsBeforeAndAfter;
 import org.junit.Test;
-import pageObjects.HomePageScooter;
-import pageObjects.OrderPageScooter;
+import ru.qascooter.baseTest.BaseCookieClose;
+import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
+import ru.qascooter.pageObjects.HomePageScooter;
+import ru.qascooter.pageObjects.OrderPageScooter;
 
-import static base.constants.BaseUrlConstants.URL_MAIN_SCOOTER;
 import static org.junit.Assert.assertEquals;
+import static ru.qascooter.baseTest.constants.BaseUrlConstants.URL_MAIN_SCOOTER;
 
 public class ButtonOrderTest extends BaseTestsBeforeAndAfter {
 
     @Test
-    public void testButtonOrderInHeader  (){
+    public void testButtonOrderInHeader() {
         driver.get(URL_MAIN_SCOOTER);
         BaseCookieClose.clickCookieButtonClose(driver);
         BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);
@@ -31,7 +31,7 @@ public class ButtonOrderTest extends BaseTestsBeforeAndAfter {
     }
 
     @Test
-    public void testButtonOrderInHomeRoadMap  (){
+    public void testButtonOrderInHomeRoadMap() {
         driver.get(URL_MAIN_SCOOTER);
         BaseCookieClose.clickCookieButtonClose(driver);
         BaseCookieClose.waitForInvisibilityCookieButtonClose(driver);

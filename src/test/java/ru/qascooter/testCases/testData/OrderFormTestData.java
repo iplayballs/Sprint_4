@@ -1,6 +1,5 @@
-package testCases.testData;
+package ru.qascooter.testCases.testData;
 
-import java.time.LocalDate;
 import java.util.Random;
 
 public class OrderFormTestData {
@@ -13,14 +12,12 @@ public class OrderFormTestData {
     public static String shortAdress = "Московская 10";
     public static String longAdress = "Новосибирская область, город Бердск, дом 17";
 
-    public static int randomSubway = setupRandomSubway();
 
     public static String eightPhoneNumber = "89998887766";
     public static String plusSevenPhoneNumber = "+79998887766";
 
     public static String randomWhenToBringScooterDate = setupRandomWhenToBringScooterDate();
 
-    public static int randomTermRent = setupRandomTermRent();
 
     public static boolean blackScooterColor = true;
     public static boolean greyScooterColor = true;
@@ -35,7 +32,7 @@ public class OrderFormTestData {
         OrderFormTestData.greyScooterColor = greyScooterColor;
     }
 
-    public static String setupRandomWhenToBringScooterDate(){
+    public static String setupRandomWhenToBringScooterDate() {
         int maxDays = 27;
         int maxMonth = 11;
         int actualYear = 2024;
@@ -44,28 +41,11 @@ public class OrderFormTestData {
         Random random = new Random();
         int randomDays = random.nextInt(maxDays) + 1;
         int randomMonth = random.nextInt(maxMonth) + 1;
-        int randomYear = random.nextInt( maxYear - actualYear + 1) + actualYear;
+        int randomYear = random.nextInt(maxYear - actualYear + 1) + actualYear;
         randomWhenToBringScooterDate = String.format("%02d.%02d.%04d", randomDays, randomMonth, randomYear);
 
         return randomWhenToBringScooterDate;
     }
 
-    public static int setupRandomTermRent(){
-        int numberOfOption = 7;
-
-        Random random = new Random();
-        randomTermRent = random.nextInt(numberOfOption) + 1;
-
-        return randomTermRent;
-    }
-
-    public static int setupRandomSubway(){
-        int numberOfOption = 224;
-
-        Random random = new Random();
-        randomSubway = random.nextInt(numberOfOption + 1);
-
-        return randomSubway;
-    }
 
 }

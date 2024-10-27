@@ -1,4 +1,4 @@
-package pageObjects;
+package ru.qascooter.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,8 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import static testCases.testData.OrderFormTestData.randomSubway;
-import static testCases.testData.OrderFormTestData.randomTermRent;
+import java.util.Random;
 
 public class OrderPageScooter {
     private WebDriver driver;
@@ -82,16 +81,19 @@ public class OrderPageScooter {
         String text = driver.findElement(xpathOrderHeader).getText();
         return text;
     }
+
     //геттер для assertEquals перехода на вторую часть формы
     public String getTextOfXpathAboutRentHeader() {
         String text = driver.findElement(xpathHeaderAboutRent).getText();
         return text;
     }
+
     //геттер для assertEquals перехода на модалку Хотите сделать заказ
     public String getTextOfXpathHeaderModalWantToOrderFinished() {
         String text = driver.findElement(xpathHeaderModalWantToOrderFinished).getText();
         return text;
     }
+
     //геттер для assertEquals перехода на модалку Заказ оформлен
     public String getTextOfXpathHeaderModalOrderFinished() {
         String text = driver.findElement(xpathHeaderModalOrderFinished).getText();
@@ -99,17 +101,18 @@ public class OrderPageScooter {
     }
 
 
-
     //метод ожидания появления заголовка Для кого самокат
     public void waitForOrderHeader() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathOrderHeader));
     }
+
     //метод ожидания появления списка станий метро
     public void waitForSelectSearhSubwayList() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathSelectSearhSubwayList));
     }
+
     //метод ожидания, что поле Метро заполнено
     public void waitForSelectSearhSubwayEdit() {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(driver -> (driver.findElement(xpathSelectSearhSubwayInput).getAttribute("value") != null
@@ -122,115 +125,154 @@ public class OrderPageScooter {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathHeaderAboutRent));
     }
+
     //метод ожидания появления календаря для Когда привезти самокат
     public void waitForModalCalendarClickable() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathModalCalendar));
     }
+
     //метод ожидания, что поле Когда привезти самокат заполнено
     public void waitForInputWhenToBringScooterEdit() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(xpathModalCalendar));
     }
+
     //метод ожидания появления списка для Срок аренды
     public void waitForDropDownTermRentClickable() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(xpathDropDownTermRent));
     }
+
     //метод ожидания, что поле Срок заполнено
     public void waitForInputTermRentEdit() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfElementLocated(xpathDropDownTermRentFilled));
     }
+
     //метод ожидания появления модалки Заказ оформлен
     public void waitForHeaderModalWantToOrderFinished() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathHeaderModalWantToOrderFinished));
     }
+
     public void waitForHeaderOrderFinished() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpathHeaderModalOrderFinished));
     }
-        
+
     //метод заполнения поля Имя
-    public void fillInputName (String name) {
+    public void fillInputName(String name) {
         driver.findElement(xpathInputName).click();
         driver.findElement(xpathInputName).sendKeys(name);
     }
+
     //метод заполнения поля Фамилия
-    public void fillInputSurname (String surname) {
+    public void fillInputSurname(String surname) {
         driver.findElement(xpathInputSurname).click();
         driver.findElement(xpathInputSurname).sendKeys(surname);
     }
+
     //метод заполнения поля Адрес
-    public void fillInputAdress (String adress) {
+    public void fillInputAdress(String adress) {
         driver.findElement(xpathInputAdress).click();
         driver.findElement(xpathInputAdress).sendKeys(adress);
     }
+
     //метод заполнения поля Станция по клику
-    public void fillInputSearhSubway () {
+    public void fillInputSearhSubway() {
         driver.findElement(xpathSelectSearhSubway).click();
         waitForSelectSearhSubwayList();
         WebElement element = driver.findElement(xpathSelectSearhSubwayButton);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(xpathSelectSearhSubwayButton).click();
         waitForSelectSearhSubwayEdit();
     }
+
     //метод заполнения поля Телефон
-    public void fillInputPhoneNumber (String phoneNumber) {
+    public void fillInputPhoneNumber(String phoneNumber) {
         driver.findElement(xpathInputPhoneNumber).click();
         driver.findElement(xpathInputPhoneNumber).sendKeys(phoneNumber);
     }
+
     //метод клика по кнопке Заказать в форме order
-    public void clickButtonNext () {
+    public void clickButtonNext() {
         driver.findElement(xpathButtonNext).click();
     }
+
     //метод заполнения поля Когда привезти самокат (клик, ожидание, клик дата)
-    public void fillInputWhenToBringScooter(String data){
+    public void fillInputWhenToBringScooter(String data) {
         driver.findElement(xpathInputWhenToBringScooter).click();
         waitForModalCalendarClickable();
         driver.findElement(xpathInputTermRent).sendKeys(data);
         driver.findElement(xpathModalCalendarDateSelected).click();
         waitForInputWhenToBringScooterEdit();
     }
+
     //метод заполнения поля Срок аренды (клик, ожидание, клик option)
-    public void fillInputTermRent(){
+    public void fillInputTermRent() {
         driver.findElement(xpathDropDownRent).click();
         waitForDropDownTermRentClickable();
         WebElement element = driver.findElement(xpathDropDownTermRentFullDay);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         driver.findElement(xpathDropDownTermRentFullDay).click();
         waitForInputTermRentEdit();
     }
+
     //метод выбора чек-бокса черный жемчуг/серый
-    public void setCheckBoxColour(boolean colourBlack, boolean colourGrey){
+    public void setCheckBoxColour(boolean colourBlack, boolean colourGrey) {
         By xpathColourBlack;
         By xpathColourGrey;
         if (colourBlack) {
-            xpathColourBlack=xpathCheckBoxBlack;
+            xpathColourBlack = xpathCheckBoxBlack;
             driver.findElement(xpathColourBlack).click();
         }
         if (colourGrey) {
-            xpathColourGrey=xpathCheckBoxGrey;
+            xpathColourGrey = xpathCheckBoxGrey;
             driver.findElement(xpathColourGrey).click();
         }
     }
-   //метод заполнения поля Комментарий
-    public void fillInputComment(String comment){
+
+    //метод заполнения поля Комментарий
+    public void fillInputComment(String comment) {
         driver.findElement(xpathInputComment).click();
         driver.findElement(xpathInputComment).sendKeys(comment);
     }
+
     //метод клика по кнопке Заказать во второй части формы заказа
-    public void clickButtonOrder(){
+    public void clickButtonOrder() {
         driver.findElement(xpathButtonOrder).click();
     }
 
     //метод клика по кнопке Да в модалке Хотите оформить заказ
-    public void clickButtonModalWantToOrderFinishedYes(){
+    public void clickButtonModalWantToOrderFinishedYes() {
         driver.findElement(xpathButtonModalWantToOrderFinishedYes).click();
     }
+
     //метод клика по кнопке Нет в модалке Хотите оформить заказ
-    public void clickButtonModalWantToOrderFinishedNo(){
+    public void clickButtonModalWantToOrderFinishedNo() {
         driver.findElement(xpathButtonModalWantToOrderFinishedNo).click();
+    }
+
+    public static int randomTermRent = setupRandomTermRent();
+
+    public static int setupRandomTermRent() {
+        int numberOfOption = 7;
+
+        Random random = new Random();
+        randomTermRent = random.nextInt(numberOfOption) + 1;
+
+        return randomTermRent;
+    }
+
+    public static int randomSubway = setupRandomSubway();
+
+    public static int setupRandomSubway() {
+        int numberOfOption = 224;
+
+        Random random = new Random();
+        randomSubway = random.nextInt(numberOfOption + 1);
+
+        return randomSubway;
     }
 }
