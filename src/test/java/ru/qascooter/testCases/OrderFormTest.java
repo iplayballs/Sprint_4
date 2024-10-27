@@ -3,7 +3,7 @@ package ru.qascooter.testCases;
 import org.junit.Test;
 import ru.qascooter.baseTest.BaseCookieClose;
 import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
-import ru.qascooter.pageObjects.OrderPageScooter;
+import ru.qascooter.page.objects.OrderPageScooter;
 import ru.qascooter.testCases.testData.OrderFormTestData;
 
 import static org.junit.Assert.assertEquals;

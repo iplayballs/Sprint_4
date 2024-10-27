@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.qascooter.baseTest.BaseCookieClose;
 import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
-import ru.qascooter.pageObjects.HomePageScooter;
+import ru.qascooter.page.objects.HomePageScooter;
 
 import java.time.Duration;
 

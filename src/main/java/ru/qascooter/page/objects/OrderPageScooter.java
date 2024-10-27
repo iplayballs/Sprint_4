@@ -1,4 +1,4 @@
-package ru.qascooter.pageObjects;
+package ru.qascooter.page.objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
