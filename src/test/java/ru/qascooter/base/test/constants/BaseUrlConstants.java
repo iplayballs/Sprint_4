@@ -1,4 +1,4 @@
-package ru.qascooter.baseTest.constants;
+package ru.qascooter.base.test.constants;
 
 public class BaseUrlConstants {
 

@@ -1,4 +1,4 @@
-package ru.qascooter.testCases.testData;
+package ru.qascooter.test.cases.test.data;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package ru.qascooter.baseTest;
+package ru.qascooter.base.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,14 +1,16 @@
-package ru.qascooter.testCases;
+package ru.qascooter.test.cases;
 
 import org.junit.Test;
-import ru.qascooter.baseTest.BaseCookieClose;
-import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
+import ru.qascooter.base.test.BaseCookieClose;
+import ru.qascooter.base.test.BaseTestsBeforeAndAfter;
 import ru.qascooter.page.objects.OrderPageScooter;
-import ru.qascooter.testCases.testData.OrderFormTestData;
+import ru.qascooter.test.cases.test.data.OrderFormTestData;
+
 
 import static org.junit.Assert.assertEquals;
-import static ru.qascooter.baseTest.constants.BaseUrlConstants.URL_ORDER_SCOOTER;
-import static ru.qascooter.testCases.testData.OrderFormTestData.*;
+import static ru.qascooter.base.test.constants.BaseUrlConstants.URL_ORDER_SCOOTER;
+import static ru.qascooter.test.cases.test.data.OrderFormTestData.*;
+
 
 public class OrderFormTest extends BaseTestsBeforeAndAfter {
 

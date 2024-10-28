@@ -1,4 +1,4 @@
-package ru.qascooter.baseTest;
+package ru.qascooter.base.test;
 
 import org.junit.After;
 import org.junit.Before;

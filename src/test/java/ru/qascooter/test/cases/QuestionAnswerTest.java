@@ -1,4 +1,4 @@
-package ru.qascooter.testCases;
+package ru.qascooter.test.cases;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,14 +8,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.qascooter.baseTest.BaseCookieClose;
-import ru.qascooter.baseTest.BaseTestsBeforeAndAfter;
+import ru.qascooter.base.test.BaseCookieClose;
+import ru.qascooter.base.test.BaseTestsBeforeAndAfter;
 import ru.qascooter.page.objects.HomePageScooter;
 
 import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
-import static ru.qascooter.baseTest.constants.BaseUrlConstants.URL_MAIN_SCOOTER;
+import static ru.qascooter.base.test.constants.BaseUrlConstants.URL_MAIN_SCOOTER;
 
 @RunWith(Parameterized.class)
 public class QuestionAnswerTest extends BaseTestsBeforeAndAfter {
