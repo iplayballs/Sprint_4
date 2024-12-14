@@ -26,9 +26,22 @@ public class BaseTestsBeforeAndAfter {
     public void connectionChromeDriver() {
         ChromeOptions options = new ChromeOptions();
 
-        options.addArguments("--remote-allow-origins=");
+//        options.addArguments("--remote-allow-origins=");
+//
+//        System.setProperty("webdriver.chrome.driver", "C:/WebDriver/chromedriver.exe");
+        String os = System.getProperty("os.name").toLowerCase();
+        String driverPath;
 
-        System.setProperty("webdriver.chrome.driver", "C:/WebDriver/chromedriver.exe");
+        if (os.contains("win")) {
+            // Для Windows
+            driverPath = "C:/WebDriver/chromedriver.exe";
+        } else {
+            // Для Linux (или других ОС)
+            driverPath = "/usr/local/bin/chromedriver"; // Путь в контейнере Docker или на Linux
+        }
+
+        // Устанавливаем путь к драйверу
+        System.setProperty("webdriver.chrome.driver", driverPath);
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
